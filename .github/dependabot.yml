@@ -32,10 +32,19 @@ updates:
       interval: weekly
     labels: ["dependencies", "github-actions"]
 
+  # Floors stay permissive on purpose: an adopter should be able to resolve
+  # these against what they already have installed. The suite passes on both
+  # the declared floor and the latest release, so the default `increase`
+  # strategy would raise the minimum every week and narrow compatibility
+  # without buying anything. `increase-if-necessary` moves a floor only when
+  # the current requirement genuinely cannot resolve against the new version,
+  # which is the only time it should move. Security advisories arrive through
+  # a separate channel and are unaffected.
   - package-ecosystem: pip
     directory: "/"
     schedule:
       interval: weekly
+    versioning-strategy: increase-if-necessary
     labels: ["dependencies", "python"]
     commit-message:
       prefix: "deps"
