@@ -62,9 +62,15 @@ third-party SHA.
 4. Tag and move the floating major tag:
 
    ```bash
-   git tag -a v1.1.0 -m "..." && git push origin v1.1.0
+   git tag -a v1.0.1 -m "..." && git push origin v1.0.1
    git tag -f v1 && git push -f origin v1
    ```
+
+   Releases increment the patch: `v1.0.0`, `v1.0.1`, `v1.0.2`. `v1` floats to
+   the newest so `@v1` follows the line. Bump the minor only for something an
+   adopter has to opt into, the major only for something that breaks a pinned
+   `@v1` build. Move `v1` in the same session as the release: between the two,
+   `@v1` serves the previous commit while the README documents the new one.
 
 5. Publish the release:
    - Open the repository home page. With `action.yml` on the default branch, a
