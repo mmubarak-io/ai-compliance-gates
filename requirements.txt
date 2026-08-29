@@ -1,5 +1,5 @@
 pandas>=2.0.0
-pyyaml>=6.0
+pyyaml>=6.0.3
 # Parquet support for the PII scanner. Without it a .parquet dataset is
 # unreadable, which the gate reports as a coverage gap rather than a pass --
 # correct, but it blocks the build, so the reader ships by default.
